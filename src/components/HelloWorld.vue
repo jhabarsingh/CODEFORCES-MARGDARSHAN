@@ -45,7 +45,7 @@
         <v-btn
           :disabled="!valid"
           color="warning"
-          class="mr-4"
+          class="mr-auto"
           @click="submit"
         >
           Submit
@@ -85,19 +85,23 @@
       validateUser(user) {
         let info = null;
         let url = "https://codeforces.com/api/user.info?handles=" + user;
-        let option = {
-          // mode: "no-cors"
+        try {
+          fetch(url).then(data => data.json()).then(data => {
+              info = data.status;
+              if(info == "FAILED") return `Invalid username`;
+          }).catch((err) => {
+              return `Invalid username`;
+          });
+        } catch(ex) {
+          return `Invalid username`;
         }
-        fetch(url, option).then(data => data.json()).then(data => {
-            info = data.status;
-            console.log(info);
-        });
-        if(info == "FAILED") return `Invalid username`;
         
         return true;
       }, 
       submit() {
-        
+        if(this.$refs.form.validate()) {
+
+        }
       }
      }
   }
