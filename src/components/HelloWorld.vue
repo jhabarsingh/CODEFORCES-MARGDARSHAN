@@ -7,26 +7,24 @@
     class="card"
     :elevation="24"
     >
-      <v-alert
-        dense
-        border="left"
-        type="primary"
-        v-for="(data, index) in alerts" 
-        :key="index"
-        v-if='data != ""'
-      >
-        {{ data }}
-      </v-alert>
       
       <v-form
         class="form"
         ref="form"
         v-model="valid"
-        lazy-validation
       >
+        <v-alert
+          dense
+          :elevation="24"
+          type="error"
+          v-show="display"
+        >
+          Invalid Username
+        </v-alert>
+
         <v-text-field
           v-model="name1"
-          :rules="[validateUser, ...nameRules]"
+          :rules="[...nameRules]"
           label="Your Profile"
           required
           :counter=20
@@ -35,7 +33,7 @@
         
         <v-text-field
           v-model="name2"
-          :rules="[validateUser, ...nameRules]"
+          :rules="[...nameRules]"
           label="Other's Profile"
           required
           class="input"
@@ -62,46 +60,32 @@
       valid: false,
       name1: '',
       name2: '',
+      display: false,
       nameRules: [
         v => !!v || 'Name is required',
         v => (v && v.length <= 20) || 'Name must be less than 20 characters'
       ],
-      alerts: [
-        "",
-        ""
-      ]
+      
     }),
     
-    computed: {
-      getAlerts(str) {
-        return this.alerts;
-      }
-    },
-
     methods: {
-      validate () {
-        this.$refs.form.validate()
-      },
       validateUser(user) {
         let info = null;
         let url = "https://codeforces.com/api/user.info?handles=" + user;
-        try {
-          fetch(url).then(data => data.json()).then(data => {
-              info = data.status;
-              if(info == "FAILED") return `Invalid username`;
-          }).catch((err) => {
-              return `Invalid username`;
-          });
-        } catch(ex) {
-          return `Invalid username`;
-        }
-        
-        return true;
+        fetch(url).then(data => data.json()).then(data => {
+            let info = data.status;
+            console.log(info)
+            if(info == "OK") {
+              window.localStorage.setItem("yours_profile", this.name1);
+              window.localStorage.setItem("others_profile", this.name2);
+              this.$router.push("/submissions");
+            }
+        })
+        return false;
       }, 
       submit() {
-        if(this.$refs.form.validate()) {
-
-        }
+        this.validateUser(this.name1 + ";" + this.name2)
+        
       }
      }
   }
