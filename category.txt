@@ -1,7 +1,0 @@
-Div 2.A
-Div 2.B
-Div 2.C
-Div 2.D
-Div 2.E
-Div 1.D
-Div 1.E
