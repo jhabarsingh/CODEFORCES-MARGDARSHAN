@@ -17,23 +17,30 @@
         ></v-img>
       </template>
 
-      <v-app-bar-nav-icon></v-app-bar-nav-icon>
+      <v-btn icon>
+        <v-icon large dark>mdi-home</v-icon>
+      </v-btn>
 
       <v-app-bar-title>CODEFORCES MARGDARSHAN</v-app-bar-title>
 
       <v-spacer></v-spacer>
 
-      <v-btn icon>
-        <v-icon>mdi-magnify</v-icon>
-      </v-btn>
+      <v-badge
+        bordered
+        color="primary"
+        icon="mdi-eye"
+        overlap
+        style="margin:10px;"
+      >
+        <v-btn
+          class="white--text"
+          color="primary"
+          depressed
+        >
+          Likes
+        </v-btn>
+      </v-badge>
 
-      <v-btn icon>
-        <v-icon>mdi-heart</v-icon>
-      </v-btn>
-
-      <v-btn icon>
-        <v-icon>mdi-dots-vertical</v-icon>
-      </v-btn>
 
       <template v-slot:extension>
         <v-tabs align-with-title>
