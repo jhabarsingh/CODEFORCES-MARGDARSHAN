@@ -18,7 +18,7 @@
       </template>
 
       <v-btn icon>
-        <v-icon large dark>mdi-home</v-icon>
+        <v-icon large dark @click="$router.push('/')">mdi-home</v-icon>
       </v-btn>
 
       <v-app-bar-title>CODEFORCES MARGDARSHAN</v-app-bar-title>
@@ -37,7 +37,7 @@
           color="primary"
           depressed
         >
-          Likes
+          Views
         </v-btn>
       </v-badge>
 
