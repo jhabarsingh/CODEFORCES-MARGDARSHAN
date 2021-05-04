@@ -19,7 +19,7 @@
 
       <v-app-bar-nav-icon></v-app-bar-nav-icon>
 
-      <v-app-bar-title>Title</v-app-bar-title>
+      <v-app-bar-title>CODEFORCES MARGDARSHAN</v-app-bar-title>
 
       <v-spacer></v-spacer>
 
@@ -37,9 +37,13 @@
 
       <template v-slot:extension>
         <v-tabs align-with-title>
-          <v-tab>Tab 1</v-tab>
-          <v-tab>Tab 2</v-tab>
-          <v-tab>Tab 3</v-tab>
+          <v-tab>Div 2.A</v-tab>
+          <v-tab>Div 2.B</v-tab>
+          <v-tab>Div 2.C</v-tab>
+          <v-tab>Div 2.D</v-tab>
+          <v-tab>Div 2.E</v-tab>
+          <v-tab>Div 1.D</v-tab>
+          <v-tab>Div 1.E</v-tab>
         </v-tabs>
       </template>
     </v-app-bar>
@@ -52,3 +56,9 @@
     </v-sheet>
   </v-card>
 </template>
+
+<script>
+    export default {
+
+    }
+</script>

@@ -1,5 +1,14 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
+  <Submission />
 </template>
+
+<script>
+  import Submission from '../components/Submission.vue'
+
+  export default {
+
+    components: {
+      Submission,
+    },
+  }
+</script>

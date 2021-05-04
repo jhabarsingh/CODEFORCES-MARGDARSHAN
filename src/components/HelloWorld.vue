@@ -27,7 +27,7 @@
         <v-text-field
           v-model="name1"
           :rules="[validateUser, ...nameRules]"
-          label="Profile 1"
+          label="Your Profile"
           required
           :counter=20
         ></v-text-field>
@@ -36,7 +36,7 @@
         <v-text-field
           v-model="name2"
           :rules="[validateUser, ...nameRules]"
-          label="Profile 2"
+          label="Other's Profile"
           required
           class="input"
           :counter=20
