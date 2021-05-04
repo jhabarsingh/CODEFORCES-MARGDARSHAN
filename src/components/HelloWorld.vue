@@ -11,7 +11,9 @@
         dense
         border="left"
         type="primary"
-        v-for="(data, index) in alerts" :key="index"
+        v-for="(data, index) in alerts" 
+        :key="index"
+        v-if='data != ""'
       >
         {{ data }}
       </v-alert>
@@ -21,26 +23,24 @@
         ref="form"
         v-model="valid"
         lazy-validation
-        @submit.prevent
       >
         <v-text-field
           v-model="name1"
-          :rules="[...nameRules]"
+          :rules="[validateUser, ...nameRules]"
           label="Profile 1"
           required
           :counter=20
-          @keyup.enter="submit"
         ></v-text-field>
-
+        
+        
         <v-text-field
           v-model="name2"
-          :rules="[...nameRules]"
+          :rules="[validateUser, ...nameRules]"
           label="Profile 2"
           required
+          class="input"
           :counter=20
-          @keyup.enter="submit"
         ></v-text-field>
-
 
         <v-btn
           :disabled="!valid"
@@ -59,41 +59,45 @@
 <script>
   export default {
     data: () => ({
-      valid: true,
+      valid: false,
       name1: '',
       name2: '',
       nameRules: [
-        v => !!v || 'Name is required'
+        v => !!v || 'Name is required',
+        v => (v && v.length <= 20) || 'Name must be less than 20 characters'
       ],
       alerts: [
-
+        "",
+        ""
       ]
     }),
+    
+    computed: {
+      getAlerts(str) {
+        return this.alerts;
+      }
+    },
 
     methods: {
+      validate () {
+        this.$refs.form.validate()
+      },
       validateUser(user) {
         let info = null;
         let url = "https://codeforces.com/api/user.info?handles=" + user;
         let option = {
-          mode: "no-cors"
+          // mode: "no-cors"
         }
         fetch(url, option).then(data => data.json()).then(data => {
             info = data.status;
+            console.log(info);
         });
-        console.log(info);
-        if(info == "FAILED") return false;
+        if(info == "FAILED") return `Invalid username`;
+        
         return true;
       }, 
       submit() {
-        if(!this.validateUser(this.name1)) {
-          this.alerts.push(`${name1} does not exist`);
-        }
-        if(!this.validateUser(this.name2)) {
-          this.alerts.push(`${name2} does not exist`);
-        }
-        else {
-          return true;
-        }
+        
       }
      }
   }
@@ -130,6 +134,10 @@
     background: url(https://thumbs.gfycat.com/NegligibleImmaculateFantail-size_restricted.gif);
     background-repeat: no-repeat;
     background-size: cover;
+  }
+
+  .input {
+    margin-top: 10px;
   }
 
 </style>
