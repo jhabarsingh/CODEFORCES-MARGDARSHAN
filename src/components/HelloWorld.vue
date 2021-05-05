@@ -76,8 +76,8 @@
             let info = data.status;
             console.log(info)
             if(info == "OK") {
-              window.localStorage.setItem("yours_profile", this.name1);
-              window.localStorage.setItem("others_profile", this.name2);
+              window.localStorage.setItem("yours_name", this.name1);
+              window.localStorage.setItem("others_name", this.name2);
               this.$router.push("/submissions");
             }
         })

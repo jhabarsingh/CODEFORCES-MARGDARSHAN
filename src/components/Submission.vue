@@ -66,6 +66,67 @@
 
 <script>
     export default {
+      data: () => ({
+        yours_name: null,
+        others_name: null,
+        yours_submissions: new Map(),
+        others_submissions: new Map()
+      }),
 
+      methods: {
+        getUrl(username) {
+          let url = `https://codeforces.com/api/user.status?handle=${username}`
+          return url;
+        },
+        getSubmissions() {
+          let temp = window.localStorage.getItem("yours_name");
+          if(temp == null) {
+            this.yours_name = "JhabarBhati";
+          }
+          else {
+            this.yours_name = temp;
+          }
+
+          temp = window.localStorage.getItem("others_name");
+          if(temp == null) {
+            this.others_name = "JhabarBhati";
+          }
+          else {
+            this.others_name = temp;
+          }
+
+          this.initializeData(this.yours_name);
+          this.initializeData(this.others_name);
+        },
+
+        initializeData(username) {
+          fetch(this.getUrl(username)).then(data => data.json())
+            .then(datas => {
+              let data = datas.result.reverse();
+              data = data.filter(e => e.verdict == "OK");
+              data = data.map(e => e.problem);
+              let temp = new Map();
+
+              for(let i in data) {
+                let char = data[i].index.toLowerCase()[0];
+                if(temp.has(char)) {
+                  let p = temp.get(char);
+                  p.push(data[i]);
+                  temp.set(char, p);
+                }
+                else {
+                  let p = [];
+                  p.push(data[i]);
+                  temp.set(char, p);
+                }
+              }
+              this.yours_submissions = temp;
+              console.log(temp);
+            })
+        }
+      },
+      created() {
+        this.getSubmissions();
+      }
     }
 </script>
