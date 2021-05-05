@@ -44,21 +44,21 @@
 
       <template v-slot:extension>
         <v-tabs align-with-title>
-          <v-tab>Div 2.A</v-tab>
-          <v-tab>Div 2.B</v-tab>
-          <v-tab>Div 2.C</v-tab>
-          <v-tab>Div 2.D</v-tab>
-          <v-tab>Div 2.E</v-tab>
-          <v-tab>Div 1.D</v-tab>
-          <v-tab>Div 1.E</v-tab>
+          <v-tab @click="index='a'">Div 2.A</v-tab>
+          <v-tab @click="index='b'">Div 2.B</v-tab>
+          <v-tab @click="index='c'">Div 2.C</v-tab>
+          <v-tab @click="index='d'">Div 2.D</v-tab>
+          <v-tab @click="index='e'">Div 2.E</v-tab>
+          <v-tab @click="index='f'">Div 1.D</v-tab>
+          <v-tab @click="index='g'">Div 1.E</v-tab>
         </v-tabs>
       </template>
     </v-app-bar>
     <v-sheet
       id="scrolling-techniques-3"
     >
-      <v-container style="height: 1000px;margin-top:250px">
-        <List />
+      <v-container style="min-height: 1000px;margin-top:250px">
+        <List :index='index'/>
       </v-container>
     </v-sheet>
   </v-card>
@@ -72,66 +72,11 @@
       },
       
       data: () => ({
-        yours_name: null,
-        others_name: null,
-        yours_submissions: new Map(),
-        others_submissions: new Map()
+        index: 'a'
       }),
 
       methods: {
-        getUrl(username) {
-          let url = `https://codeforces.com/api/user.status?handle=${username}`
-          return url;
-        },
-        getSubmissions() {
-          let temp = window.localStorage.getItem("yours_name");
-          if(temp == null) {
-            this.yours_name = "JhabarBhati";
-          }
-          else {
-            this.yours_name = temp;
-          }
-
-          temp = window.localStorage.getItem("others_name");
-          if(temp == null) {
-            this.others_name = "JhabarBhati";
-          }
-          else {
-            this.others_name = temp;
-          }
-
-          this.initializeData(this.yours_name);
-          this.initializeData(this.others_name);
-        },
-
-        initializeData(username) {
-          fetch(this.getUrl(username)).then(data => data.json())
-            .then(datas => {
-              let data = datas.result.reverse();
-              data = data.filter(e => e.verdict == "OK");
-              data = data.map(e => e.problem);
-              let temp = new Map();
-
-              for(let i in data) {
-                let char = data[i].index.toLowerCase()[0];
-                if(temp.has(char)) {
-                  let p = temp.get(char);
-                  p.push(data[i]);
-                  temp.set(char, p);
-                }
-                else {
-                  let p = [];
-                  p.push(data[i]);
-                  temp.set(char, p);
-                }
-              }
-              this.yours_submissions = temp;
-              console.log(temp);
-            })
-        }
-      },
-      created() {
-        this.getSubmissions();
+        
       }
     }
     // https://codeforces.com/api/contest.ratingChanges?contestId=566
