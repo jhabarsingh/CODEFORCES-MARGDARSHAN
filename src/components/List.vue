@@ -1,10 +1,11 @@
 <template>
   <v-card
     class="mx-auto"
-    max-width="700"
-    :elevation="2"
+    max-width="600"
+    :elevation="3"
+    v-if="items.length != 0"
   >
-    <v-list>
+    <v-list class="list">
       <v-list-item-group v-model="model">
         <v-list-item
           v-for="(item, i) in items"
@@ -20,12 +21,19 @@
             </v-icon>
           </v-list-item-icon>
           <v-list-item-content>
-            <v-list-item-title v-text="item.text"></v-list-item-title>
+            <v-list-item-title v-text="item.name"></v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list-item-group>
     </v-list>
   </v-card>
+  <v-alert
+    border="left"
+    color="warning"
+    dense
+    type="success"
+    v-else
+  >No Question</v-alert>
 </template>
 
 
@@ -33,24 +41,108 @@
   export default {
     data: () => ({
       items: [
-        {
-          icon: 'mdi-inbox',
-          text: 'Inbox',
-        },
-        {
-          icon: 'mdi-star',
-          text: 'Star',
-        },
-        {
-          icon: 'mdi-send',
-          text: 'Send',
-        },
-        {
-          icon: 'mdi-email-open',
-          text: 'Drafts',
-        },
+      ],
+      items1: [
+
       ],
       model: 1,
+      yours_submissions: null,
+      others_submissions: null,
+      yours_name: 'JhabarBhati',
+      others_name: 'JhabarBhati'
     }),
+    
+    props: [
+        'index'
+    ],
+
+    methods: {
+      getUrl(username) {
+          let url = `https://codeforces.com/api/user.status?handle=${username}`
+          return url;
+        },
+        getSubmissions() {
+          let temp = window.localStorage.getItem("yours_name");
+          if(temp == null) {
+            this.yours_name = "JhabarBhati";
+          }
+          else {
+            this.yours_name = temp;
+          }
+
+          temp = window.localStorage.getItem("others_name");
+          if(temp == null) {
+            this.others_name = "JhabarBhati";
+          }
+          else {
+            this.others_name = temp;
+          }
+
+          this.initializeData(this.yours_name, true);
+          this.initializeData(this.others_name, false);
+        },
+
+        initializeData(username, isyou) {
+          fetch(this.getUrl(username)).then(data => data.json())
+            .then(datas => {
+              let data = datas.result.reverse();
+              data = data.filter(e => e.verdict == "OK");
+              data = data.map(e => e.problem);
+              let temp = new Map();
+
+              for(let i in data) {
+                let char = data[i].index.toLowerCase()[0];
+                if(temp.has(char)) {
+                  let p = temp.get(char);
+                  p.push(data[i]);
+                  temp.set(char, p);
+                }
+                else {
+                  let p = [];
+                  p.push(data[i]);
+                  temp.set(char, p);
+                }
+              }
+              if(isyou) this.yours_submissions = temp;
+              else this.others_submissions = temp;
+              console.log(this.yours_submissions, this.others_submissions)
+            })
+        }
+    },
+
+    watch: {
+      index(val) {
+        let temp = this.others_submissions.get(val);
+        if(temp == null) {
+          this.items = [];
+        }
+        else {
+          this.items = temp;
+        }
+        
+        temp = this.others_submissions.get(val);
+
+        if(temp == null) {
+          this.items1 = [];
+        }
+        else {
+          this.items1 = temp;
+        }
+      }
+    },
+
+    mounted() {
+      console.log(this.index);
+    },
+    
+    created() {
+      this.getSubmissions();
+    }
   }
 </script>
+
+<style scoped>
+  .list {
+    padding: 10px;
+  }
+</style>
