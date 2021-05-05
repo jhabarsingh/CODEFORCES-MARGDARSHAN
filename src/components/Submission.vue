@@ -57,18 +57,21 @@
     <v-sheet
       id="scrolling-techniques-3"
     >
-      <v-container style="min-height: 1000px;margin-top:250px">
+      <v-container style="min-height: 200px;margin-top:250px">
         <List :index='index'/>
       </v-container>
+      <Footer />
     </v-sheet>
   </v-card>
 </template>
 
 <script>
     import List from './List'
+    import Footer from './Footer'
     export default {
       components: {
         List,
+        Footer
       },
       
       data: () => ({
