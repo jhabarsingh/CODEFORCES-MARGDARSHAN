@@ -15,8 +15,8 @@
             md
             color="green darken-2"
             >
-            <!-- mdi-checkbox-marked-circle -->
-            mdi-pencil
+                mdi-checkbox-marked-circle
+                mdi-pencil
             </v-icon>
           </v-list-item-icon>
           <v-list-item-content>
