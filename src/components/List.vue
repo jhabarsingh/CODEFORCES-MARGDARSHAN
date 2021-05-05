@@ -11,6 +11,8 @@
           v-for="(item, i) in items"
           :key="i"
           :class="finder(item.contestId) ? 'light-blue lighten-2' : ''"
+          @click="solveQuestion(item.contestId, item.index)"
+          style="margin-top:1px;"
         >
           <v-list-item-icon>        
             <v-icon
@@ -66,12 +68,12 @@
     ],
 
     methods: {
-        getContestDetails(id) {
-          url = `https://codeforces.com/api/contest.ratingChanges?contestId=${id} `
-          fetch(url).then(data => data.json())
-            .then(data => {
-              console.log(data);
-            })
+        getContestDetails(id, index) {
+          return url;
+        },
+        solveQuestion(id, index) {
+          let url = `https://codeforces.com/problemset/problem/${id}/${index}`
+          window.location.href = url;  
         },
         finder(id) {
           return this.repeated.has(id);
