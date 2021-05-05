@@ -27,6 +27,7 @@
           :rules="[...nameRules]"
           label="Your Profile"
           required
+          placeholder="JhabarBhati"
           :counter=20
         ></v-text-field>
         
