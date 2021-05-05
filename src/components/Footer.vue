@@ -12,10 +12,11 @@
     >
       <v-card-text>
         <v-btn
-          v-for="icon in icons"
+          v-for="(icon, index) in icons"
           :key="icon"
           class="mx-4 white--text"
           icon
+          @click="goTo(index)"
         >
           <v-icon size="24px">
             {{ icon }}
@@ -44,8 +45,22 @@
         'mdi-twitter',
         'mdi-linkedin',
         'mdi-instagram',
+        'mdi-github'
+      ],
+      links: [
+          'https://www.facebook.com/jabbe.don/',
+          'https://twitter.com/BhatiJhabar',
+          'https://www.linkedin.com/in/jhabar-bhati-774969134/',
+          'https://www.instagram.com/bhatijhabarsingh/',
+          'https://github.com/jhabarsingh'
       ],
       footer: "Success is nothing more than a few simple disciplines, practiced every day."
     }),
+
+    methods: {
+        goTo(index) {
+            window.location.href = this.links[index];
+        }
+    }
   }
 </script>
