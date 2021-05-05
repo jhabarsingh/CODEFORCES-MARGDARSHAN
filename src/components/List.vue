@@ -10,13 +10,21 @@
         <v-list-item
           v-for="(item, i) in items"
           :key="i"
+          :class="finder(item.contestId) ? 'lime accent-2' : ''"
         >
           <v-list-item-icon>        
             <v-icon
             md
             color="green darken-2"
+            v-if="finder(item.contestId)"
             >
                 mdi-checkbox-marked-circle
+            </v-icon>
+            <v-icon
+            md
+            color="green darken-2"
+            v-else
+            >
                 mdi-pencil
             </v-icon>
           </v-list-item-icon>
@@ -49,7 +57,8 @@
       yours_submissions: null,
       others_submissions: null,
       yours_name: 'JhabarBhati',
-      others_name: 'JhabarBhati'
+      others_name: 'JhabarBhati',
+      repeated: new Set()
     }),
     
     props: [
@@ -57,9 +66,28 @@
     ],
 
     methods: {
-      getUrl(username) {
+        finder(id) {
+          return this.repeated.has(id);
+        },
+        getUrl(username) {
           let url = `https://codeforces.com/api/user.status?handle=${username}`
           return url;
+        },
+        getRepeated() {
+          if(this.items.length == 0 || this.items1.length == 0) {
+            return;
+          }
+          else {
+            let temp = new Set();
+            for(let i=0; i<this.items.length; i++) {
+              for(let j=0; j<this.items1.length; j++) {
+                if(this.items[i].contestId == this.items1[j].contestId) {
+                  temp.add(this.items[i].contestId);
+                }
+              } 
+            }
+            this.repeated = temp;
+          }
         },
         getSubmissions() {
           let temp = window.localStorage.getItem("yours_name");
@@ -77,7 +105,6 @@
           else {
             this.others_name = temp;
           }
-
           this.initializeData(this.yours_name, true);
           this.initializeData(this.others_name, false);
         },
@@ -103,9 +130,19 @@
                   temp.set(char, p);
                 }
               }
-              if(isyou) this.yours_submissions = temp;
-              else this.others_submissions = temp;
-              console.log(this.yours_submissions, this.others_submissions)
+              if(isyou) {
+                this.yours_submissions = temp
+                if(temp != null) {
+                  this.items = temp.get('a');
+                }
+              }
+              else {
+                this.others_submissions = temp;
+                if(temp != null) {
+                  this.items1 = temp.get('a');
+                  this.getRepeated();
+                }
+              }
             })
         }
     },
@@ -120,13 +157,14 @@
           this.items = temp;
         }
         
-        temp = this.others_submissions.get(val);
+        temp = this.yours_submissions.get(val);
 
         if(temp == null) {
           this.items1 = [];
         }
         else {
           this.items1 = temp;
+          this.getRepeated();
         }
       }
     },
