@@ -79,5 +79,4 @@
         
       }
     }
-    // https://codeforces.com/api/contest.ratingChanges?contestId=566
 </script>

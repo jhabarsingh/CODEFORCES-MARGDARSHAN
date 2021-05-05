@@ -10,7 +10,7 @@
         <v-list-item
           v-for="(item, i) in items"
           :key="i"
-          :class="finder(item.contestId) ? 'lime accent-2' : ''"
+          :class="finder(item.contestId) ? 'light-blue lighten-2' : ''"
         >
           <v-list-item-icon>        
             <v-icon
@@ -66,6 +66,13 @@
     ],
 
     methods: {
+        getContestDetails(id) {
+          url = `https://codeforces.com/api/contest.ratingChanges?contestId=${id} `
+          fetch(url).then(data => data.json())
+            .then(data => {
+              console.log(data);
+            })
+        },
         finder(id) {
           return this.repeated.has(id);
         },
