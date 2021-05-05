@@ -23,14 +23,14 @@
         </v-btn>
       </v-card-text>
 
-      <v-card-text class="white--text pt-0">
+      <v-card-text class="white--text pt-0" style="font-size:15px;">
         {{footer}}
       </v-card-text>
 
       <v-divider></v-divider>
 
       <v-card-text class="white--text">
-        {{ new Date().getFullYear() }} — <strong>Vuetify</strong>
+        {{ new Date().getFullYear() }} — <strong>CODEFORCES MARGDARSHAN</strong>
       </v-card-text>
     </v-card>
   </v-footer>
@@ -45,7 +45,7 @@
         'mdi-linkedin',
         'mdi-instagram',
       ],
-      footer: "Hi"
+      footer: "Success is nothing more than a few simple disciplines, practiced every day."
     }),
   }
 </script>
