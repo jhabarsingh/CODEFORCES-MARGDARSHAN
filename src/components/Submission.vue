@@ -56,16 +56,21 @@
     </v-app-bar>
     <v-sheet
       id="scrolling-techniques-3"
-      class="overflow-y-auto"
-      max-height="600"
     >
-      <v-container style="height: 1000px;"></v-container>
+      <v-container style="height: 1000px;margin-top:250px">
+        <List />
+      </v-container>
     </v-sheet>
   </v-card>
 </template>
 
 <script>
+    import List from './List'
     export default {
+      components: {
+        List,
+      },
+      
       data: () => ({
         yours_name: null,
         others_name: null,
@@ -129,4 +134,5 @@
         this.getSubmissions();
       }
     }
+    // https://codeforces.com/api/contest.ratingChanges?contestId=566
 </script>
