@@ -22,8 +22,8 @@
 
 ## About 
   [CODEFORCES-MARGDARSHAN](https://codeforces-2313e.web.app/) is a Web  app built using Vuejs and Codeforces Apis. It provides many functionalities:-
-  1. Compare your **Submissions** with other **User's Submission**.
-  2. **Highlights** the **common** Submissions
+  1. **Practice** the questions that are done by another user.
+  3. **Highlights** the **Common Questions** solved by you as well as the another user.
   
  ## Preview
  
