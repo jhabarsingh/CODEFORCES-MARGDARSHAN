@@ -19,8 +19,8 @@
 
 ## About
   [CODEFORCES-MARGDARSHAN]() is a Web  app built using Vuejs and Codeforces Apis. It provides many functionalities:-
-  1. Compare your *Submissions* with other *User's Submission*.
-  2. *Highlights* the *common* Submissions
+  1. Compare your **Submissions** with other **User's Submission**.
+  2. **Highlights** the **common** Submissions
   
  ## Preview
  
