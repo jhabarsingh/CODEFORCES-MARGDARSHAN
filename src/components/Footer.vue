@@ -52,7 +52,7 @@
           'https://twitter.com/BhatiJhabar',
           'https://www.linkedin.com/in/jhabar-bhati-774969134/',
           'https://www.instagram.com/bhatijhabarsingh/',
-          'https://github.com/jhabarsingh'
+          'https://github.com/jhabarsingh/CODEFORCES-MARGDARSHAN'
       ],
       footer: "Success is nothing more than a few simple disciplines, practiced every day."
     }),
