@@ -37,6 +37,15 @@
             class="mx-1"
             color="error"
             @click="messages++"
+            v-if="finder(item.contestId)"
+          >
+            {{item.rating}}
+          </v-btn>
+          <v-btn
+            class="mx-1"
+            color="warning"
+            @click="messages++"
+            v-else
           >
             {{item.rating}}
           </v-btn>
