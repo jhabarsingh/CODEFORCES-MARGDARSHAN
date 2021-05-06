@@ -37,7 +37,7 @@
           color="primary"
           depressed
         >
-          Views
+          {{ users }}
         </v-btn>
       </v-badge>
 
@@ -51,7 +51,6 @@
           <v-tab @click="index='e'">Div 2.E</v-tab>
           <v-tab @click="index='f'">Div 1.D</v-tab>
           <v-tab @click="index='g'">Div 1.E</v-tab>
-          <v-tab @click="index='g'">{{users}}</v-tab>
         </v-tabs>
       </template>
     </v-app-bar>
@@ -67,7 +66,7 @@
 </template>
 
 <script>
-    import { db, userRef } from '../firebase';
+    import { db, viewRef } from '../firebase';
 
     import List from './List'
     import Footer from './Footer'
@@ -80,16 +79,29 @@
       data: () => ({
         index: 'a',
         documents: 1,
+        users: 0
       }),
 
       methods: {
         
       },
-      firebase() {
-        users: userRef
-      },
-      created() {
-        // console.log(this.users)
+
+      mounted() {
+
+        let ref = viewRef;
+
+        ref.once("value")
+        .then(function(snapshot) {
+          var key = snapshot.key;
+          return snapshot.toJSON();
+        }).then(data => {
+          this.users = +data + 1;
+        }).then((data) => {
+          let refs = db.ref("views");
+          let val = (+this.users);
+          refs.set({"views": val})
+        })
+
       }
     }
 </script>
