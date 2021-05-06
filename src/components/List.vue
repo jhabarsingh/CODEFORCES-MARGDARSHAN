@@ -73,7 +73,7 @@
         },
         solveQuestion(id, index) {
           let url = `https://codeforces.com/problemset/problem/${id}/${index}`
-          window.location.href = url;  
+          window.open(url, "_black");  
         },
         finder(id) {
           return this.repeated.has(id);
