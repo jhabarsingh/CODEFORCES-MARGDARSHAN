@@ -51,7 +51,7 @@
           <v-tab @click="index='e'">Div 2.E</v-tab>
           <v-tab @click="index='f'">Div 1.D</v-tab>
           <v-tab @click="index='g'">Div 1.E</v-tab>
-          <v-tab @click="index='g'">{{documents}}</v-tab>
+          <v-tab @click="index='g'">{{users}}</v-tab>
         </v-tabs>
       </template>
     </v-app-bar>
@@ -67,7 +67,8 @@
 </template>
 
 <script>
-    import { db } from '../firebase';
+    import { db, userRef } from '../firebase';
+
     import List from './List'
     import Footer from './Footer'
     export default {
@@ -78,17 +79,17 @@
       
       data: () => ({
         index: 'a',
-        documents: []
+        documents: 1,
       }),
 
       methods: {
         
       },
-      firebase: {
-        documents: db.collection('8sLBPZirVJ91Hm629MVb')
+      firebase() {
+        users: userRef
       },
       created() {
-        console.log(db.collection('8sLBPZirVJ91Hm629MVb'));
+        // console.log(this.users)
       }
     }
 </script>
