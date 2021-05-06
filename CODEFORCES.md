@@ -1,8 +1,7 @@
 Recently I created a web app named  [CODEFORCES MARGDARSHAN](https://clever-volhard-8c8aec.netlify.app/).
 
-How to use the website ?
-  home page you are asked to enter your codeforces username and others username.
-  
+Using this website you can practice the questions that are done by the other user. 
+Questions will be divided into 7 sections sorted by increasing difficulty level.
 
 The 7 sections are:
   1. Div. 2 A Problems: 
