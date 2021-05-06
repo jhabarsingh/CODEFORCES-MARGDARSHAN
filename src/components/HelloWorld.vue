@@ -101,7 +101,6 @@
     margin:auto;
     padding: 20px;
     margin-top: 100px;
-    background: transparent;
     opacity: .8;
   }
 
