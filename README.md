@@ -18,11 +18,18 @@
 
 
 ## About
-  [CODECHEF-APP]() is a Web  app built using Vuejs and Codeforces Apis. It provides many functionalities:-
-  1. Compare your submissions with other user's submission
-  2. highlight the common submissions
+  [CODEFORCES-MARGDARSHAN]() is a Web  app built using Vuejs and Codeforces Apis. It provides many functionalities:-
+  1. Compare your *Submissions* with other *User's Submission*.
+  2. *Highlights* the *common* Submissions
   
-
+ ## Preview
+ 
+ ![Home Page](https://github.com/jhabarsingh/CODEFORCES-MARGDARSHAN/blob/main/public/home_page.png?raw=true)
+ 
+ ![Submission](https://github.com/jhabarsingh/CODEFORCES-MARGDARSHAN/blob/main/public/submission.png?raw=true)
+ 
+ ![Submission1](https://github.com/jhabarsingh/CODEFORCES-MARGDARSHAN/blob/main/public/submission2.png?raw=true)
+  
 
 ## Setup On Desktop
 [Install node](https://nodejs.org/en/download/) |
