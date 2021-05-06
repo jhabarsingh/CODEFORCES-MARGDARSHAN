@@ -33,6 +33,13 @@
           <v-list-item-content>
             <v-list-item-title v-text="item.name"></v-list-item-title>
           </v-list-item-content>
+          <v-btn
+            class="mx-1"
+            color="error"
+            @click="messages++"
+          >
+            {{item.rating}}
+          </v-btn>
         </v-list-item>
       </v-list-item-group>
     </v-list>
