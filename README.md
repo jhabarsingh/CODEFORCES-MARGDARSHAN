@@ -1,4 +1,6 @@
-<a href="https://codeforces.com/blog/entry/90426">Codeforces Blog Link</a>
+### BLOGS
+* <a href="https://codeforces.com/blog/entry/90426">Codeforces Blog Link 1</a>
+* <a href="https://codeforces.com/blog/entry/90433">Codeforces Blog Link 2</a>
 
 # [CODEFORCES-MARGDARSHAN](https://codeforces-2313e.web.app/)  ⚡️ [![GitHub](https://img.shields.io/github/license/jhabarsingh/CODEFORCES-MARGDARSHAN)](https://github.com/jhabarsingh/CODEFORCES-MARGDARSHAN/blob/master/LICENSE) [![GitHub stars](https://img.shields.io/github/stars/jhabarsingh/CODEFORCES-MARGDARSHAN)](https://github.com/jhabarsingh/CODEFORCES-MARGDARSHAN/stargazers)  [![GitHub contributors](https://img.shields.io/github/contributors/jhabarsingh/CODEFORCES-MARGDARSHAN.svg)](https://github.com/jhabarsingh/CODEFORCES-MARGDARSHAN/graphs/contributors)  [![GitHub issues](https://img.shields.io/github/issues/jhabarsingh/CODEFORCES-MARGDARSHAN.svg)](https://github.com/jhabarsingh/CODEFORCES-MARGDARSHAN/issues) [![GitHub forks](https://img.shields.io/github/forks/jhabarsingh/CODEFORCES-MARGDARSHAN.svg?style=social&label=Fork)](https://GitHub.com/jhabarsingh/CODEFORCES-MARGDARSHAN/network/)
 
