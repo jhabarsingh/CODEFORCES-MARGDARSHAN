@@ -1,6 +1,6 @@
 <a href="https://codeforces.com/blog/entry/90426">Codeforces Blog Link</a>
 
-# [CODEFORCES-MARGDARSHAN](https://clever-volhard-8c8aec.netlify.app/)  ⚡️ [![GitHub](https://img.shields.io/github/license/jhabarsingh/CODEFORCES-MARGDARSHAN)](https://github.com/jhabarsingh/CODEFORCES-MARGDARSHAN/blob/master/LICENSE) [![GitHub stars](https://img.shields.io/github/stars/jhabarsingh/CODEFORCES-MARGDARSHAN)](https://github.com/jhabarsingh/CODEFORCES-MARGDARSHAN/stargazers)  [![GitHub contributors](https://img.shields.io/github/contributors/jhabarsingh/CODEFORCES-MARGDARSHAN.svg)](https://github.com/jhabarsingh/CODEFORCES-MARGDARSHAN/graphs/contributors)  [![GitHub issues](https://img.shields.io/github/issues/jhabarsingh/CODEFORCES-MARGDARSHAN.svg)](https://github.com/jhabarsingh/CODEFORCES-MARGDARSHAN/issues) [![GitHub forks](https://img.shields.io/github/forks/jhabarsingh/CODEFORCES-MARGDARSHAN.svg?style=social&label=Fork)](https://GitHub.com/jhabarsingh/CODEFORCES-MARGDARSHAN/network/)
+# [CODEFORCES-MARGDARSHAN](https://codeforces-2313e.web.app/)  ⚡️ [![GitHub](https://img.shields.io/github/license/jhabarsingh/CODEFORCES-MARGDARSHAN)](https://github.com/jhabarsingh/CODEFORCES-MARGDARSHAN/blob/master/LICENSE) [![GitHub stars](https://img.shields.io/github/stars/jhabarsingh/CODEFORCES-MARGDARSHAN)](https://github.com/jhabarsingh/CODEFORCES-MARGDARSHAN/stargazers)  [![GitHub contributors](https://img.shields.io/github/contributors/jhabarsingh/CODEFORCES-MARGDARSHAN.svg)](https://github.com/jhabarsingh/CODEFORCES-MARGDARSHAN/graphs/contributors)  [![GitHub issues](https://img.shields.io/github/issues/jhabarsingh/CODEFORCES-MARGDARSHAN.svg)](https://github.com/jhabarsingh/CODEFORCES-MARGDARSHAN/issues) [![GitHub forks](https://img.shields.io/github/forks/jhabarsingh/CODEFORCES-MARGDARSHAN.svg?style=social&label=Fork)](https://GitHub.com/jhabarsingh/CODEFORCES-MARGDARSHAN/network/)
 
 <p align="center">
   <img src="https://github.com/jhabarsingh/CODEFORCES-MARGDARSHAN/blob/main/public/codeforces_icon.png?raw=true" />
@@ -19,7 +19,7 @@
   
 
 ## About 
-  [CODEFORCES-MARGDARSHAN]() is a Web  app built using Vuejs and Codeforces Apis. It provides many functionalities:-
+  [CODEFORCES-MARGDARSHAN](https://codeforces-2313e.web.app/) is a Web  app built using Vuejs and Codeforces Apis. It provides many functionalities:-
   1. Compare your **Submissions** with other **User's Submission**.
   2. **Highlights** the **common** Submissions
   
