@@ -39,7 +39,7 @@
             @click="messages++"
             v-if="finder(item.contestId)"
           >
-            {{item.rating}}
+            {{item.rating == null ? "NR" : item.rating}}
           </v-btn>
           <v-btn
             class="mx-1"
@@ -47,7 +47,7 @@
             @click="messages++"
             v-else
           >
-            {{item.rating}}
+            {{item.rating == null ? "NR" : item.rating}}
           </v-btn>
         </v-list-item>
       </v-list-item-group>
@@ -158,13 +158,15 @@
               if(isyou) {
                 this.yours_submissions = temp
                 if(temp != null) {
-                  this.items = temp.get('a');
+                  temp = temp.get('a').sort((a, b) => +a.rating - +b.rating);
+                  this.items1 = temp.sort((a, b) => +a.rating - +b.rating);
                 }
               }
               else {
                 this.others_submissions = temp;
                 if(temp != null) {
-                  this.items1 = temp.get('a');
+                  temp = temp.get('a');
+                  this.items = temp.sort((a, b) => +a.rating - +b.rating);
                   this.getRepeated();
                 }
               }
@@ -179,7 +181,7 @@
           this.items = [];
         }
         else {
-          this.items = temp;
+          this.items = temp.sort((a, b) => +a.rating - +b.rating);
         }
         
         temp = this.yours_submissions.get(val);
@@ -188,7 +190,7 @@
           this.items1 = [];
         }
         else {
-          this.items1 = temp;
+          this.items1 = temp.sort((a, b) => +a.rating - +b.rating);
           this.getRepeated();
         }
       }
